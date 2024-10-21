@@ -1,0 +1,21 @@
+---
+- name: Ensure basic packages are installed (Ubuntu)
+  apt:
+    name: "{{ item }}"
+    state: present
+  when: ansible_os_family == "Debian"
+  loop:
+    - curl
+    - wget
+    - tar
+
+- name: Ensure basic packages are installed (CentOS)
+  yum:
+    name: "{{ item }}"
+    state: present
+  when: ansible_os_family == "RedHat"
+  loop:
+    - curl
+    - wget
+    - tar
+
